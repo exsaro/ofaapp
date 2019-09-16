@@ -10,7 +10,7 @@ export class ProductlistPage implements OnInit {
 
   constructor( private shoppingservice: ShoppingapiService) { }
 
-  getProducts(){
+  getProducts() {
     this.shoppingservice.getAllProducts();
   }
 
