@@ -15,17 +15,5 @@ export class ShoppingapiService {
     version: 'wc/v3', // WooCommerce WP REST API version
     queryStringAuth: true
   });
-
-   getAllProducts() {
-    this.WooCommerce.get('products')
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.log(error.response.data);
-    });
-   }
-
-
-
+ 
 }

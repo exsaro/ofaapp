@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingapiService } from '../services/shoppingapi.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-productlist',
@@ -8,13 +10,24 @@ import { ShoppingapiService } from '../services/shoppingapi.service';
 })
 export class ProductlistPage implements OnInit {
 
-  constructor( private shoppingservice: ShoppingapiService) { }
+  productList: any = [];
 
-  getProducts() {
-    this.shoppingservice.getAllProducts();
+  constructor( private shoppingservice: ShoppingapiService, private router: Router) { }
+
+  getProducts(product){
+    console.log(product);
+    this.router.navigate(['/productdetails',product.id]);
   }
 
   ngOnInit() {
+    this.shoppingservice.WooCommerce.get('products')
+    .then((response) => {
+      this.productList = response.data;
+      console.log(this.productList);
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
   }
 
 }

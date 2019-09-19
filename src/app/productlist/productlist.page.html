@@ -4,10 +4,6 @@
     <div slot="end" padding></div>
   </ion-toolbar>
   <ion-toolbar color="orange" class="search">
-    <!-- <ion-item class="formControl">
-      <span item-right><ion-icon name="search"></ion-icon></span>
-      <ion-input class="mainInputControl" placeholder="Search Products" color="light"></ion-input>
-    </ion-item> -->
     <ion-label color="light">Welcome <strong>Shara</strong></ion-label>
     <ion-searchbar placeholder="Search products"></ion-searchbar>
   </ion-toolbar>
@@ -16,49 +12,17 @@
 <ion-content padding color="medium">
     <h4>Rice</h4>
 
-    <ion-card color="light" (click)="getProducts()">
+    <ion-card color="light" (click)="getProducts(product)" *ngFor="let product of productList">
         <ion-card-content>
           <ion-grid no-padding>
               <ion-row>
                   <ion-col size="4" no-padding>
-                    <img src="../../assets/sample-product.png" alt="">
+                    <img *ngFor="let image of product.images" [src]="image.src" alt="">
                   </ion-col>
                   <ion-col size="8" padding-start>
-                      <ion-card-title>bb Popular Rice</ion-card-title>
-                      <ion-card-subtitle padding-bottom>Raw, Sona Masoori, 25 kg Bag</ion-card-subtitle>
-                      <div class="price">1269.00</div>
-                  </ion-col>
-                </ion-row>
-          </ion-grid>
-        </ion-card-content>
-    </ion-card>
-    <ion-card color="light">
-        <ion-card-content>
-          <ion-grid no-padding>
-              <ion-row>
-                  <ion-col size="4" no-padding>
-                    <img src="../../assets/sample-product.png" alt="">
-                  </ion-col>
-                  <ion-col size="8" padding-start>
-                      <ion-card-title>bb Popular Rice</ion-card-title>
-                      <ion-card-subtitle padding-bottom>Raw, Sona Masoori, 25 kg Bag</ion-card-subtitle>
-                      <div class="price">1269.00</div>
-                  </ion-col>
-                </ion-row>
-          </ion-grid>
-        </ion-card-content>
-    </ion-card>
-    <ion-card color="light">
-        <ion-card-content>
-          <ion-grid no-padding>
-              <ion-row>
-                  <ion-col size="4" no-padding>
-                    <img src="../../assets/sample-product.png" alt="">
-                  </ion-col>
-                  <ion-col size="8" padding-start>
-                      <ion-card-title>bb Popular Rice</ion-card-title>
-                      <ion-card-subtitle padding-bottom>Raw, Sona Masoori, 25 kg Bag</ion-card-subtitle>
-                      <div class="price">1269.00</div>
+                      <ion-card-title>{{product.name}}</ion-card-title>
+                      <ion-card-subtitle [innerHtml]='product.description.substring(0, 50)' padding-bottom></ion-card-subtitle>
+                      <div class="price" [innerHtml]='product.price_html'></div>
                   </ion-col>
                 </ion-row>
           </ion-grid>
