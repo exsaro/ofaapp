@@ -8,26 +8,26 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./productdetails.page.scss'],
 })
 export class ProductdetailsPage implements OnInit {
-
-  constructor( private shoppingservice: ShoppingapiService, private router: Router, private activeRoute: ActivatedRoute) { }
-
   id: number;
-  product: any;
-  
-
-  ngOnInit() {
+  product:  any = [];
+   constructor( private shoppingservice: ShoppingapiService, private router: Router, private activeRoute: ActivatedRoute) { 
     
-    this.activeRoute.params.subscribe(routeParams => {
-      this.id = routeParams.id;
-    });
+    
+  }
 
+ 
+  ngOnInit() {
+  
+   this.activeRoute.params.subscribe(routeParams => {
+    this.id = routeParams.id;
     this.shoppingservice.WooCommerce.get(`products/${this.id}`)
     .then((response) => {
       this.product = response.data;
-      console.log(this.product.name);
-    })
-    
-
+     })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
+  });
   }
 
 }
