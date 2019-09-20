@@ -14,9 +14,9 @@ export class ProductlistPage implements OnInit {
 
   constructor( private shoppingservice: ShoppingapiService, private router: Router) { }
 
-  getProducts(product){
+  getProducts(product) {
     console.log(product);
-    this.router.navigate(['/productdetails',product.id]);
+    this.router.navigate(['/productdetails', product.id]);
   }
 
   ngOnInit() {

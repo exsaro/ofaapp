@@ -9,15 +9,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductdetailsPage implements OnInit {
   id: number;
-  product:  any = [];
-   constructor( private shoppingservice: ShoppingapiService, private router: Router, private activeRoute: ActivatedRoute) { 
-    
-    
+  product: any = [];
+   constructor( private shoppingservice: ShoppingapiService, private router: Router, private activeRoute: ActivatedRoute) {
+
+
   }
 
- 
+
   ngOnInit() {
-  
+
    this.activeRoute.params.subscribe(routeParams => {
     this.id = routeParams.id;
     this.shoppingservice.WooCommerce.get(`products/${this.id}`)
@@ -29,5 +29,8 @@ export class ProductdetailsPage implements OnInit {
     });
   });
   }
-
+  addtocart(cartvalue) {
+    localStorage.setItem('cart', cartvalue);
+    console.log(cartvalue);
+  }
 }
