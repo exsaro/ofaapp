@@ -1,13 +1,48 @@
 <ion-header>
-  <ion-toolbar color="orange">
-    <ion-title text-center><h1>OFA</h1></ion-title>
-    <div slot="end" padding></div>
+    <ion-toolbar color="orange">
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+    
+  </ion-buttons>
+  <ion-title><h4 no-padding>Product details</h4></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-
+  <ion-img *ngFor="let image of product.images" [src]="image.src"></ion-img>
   <h1>{{product.name}}</h1>
-<button (click)="addtocart(product)">Add to cart</button>
+  <p [innerHTML]="product.description"></p>
+
 </ion-content>
+
+
+<ion-footer>
+    <ion-grid no-padding>
+        <ion-row>
+            <ion-col no-padding><ion-button no-margin color="success" expand="full">Check out</ion-button></ion-col>
+            <ion-col no-padding><ion-button no-margin (click)="addtocart(product)" color="warning" expand="full">Add to cart</ion-button></ion-col>
+        </ion-row>
+    </ion-grid>
+    
+    <ion-toolbar>
+        <ion-tabs>
+            <ion-tab-bar slot="bottom" color="danger">
+              <ion-tab-button tab="cart">
+                <ion-icon name="cart" color="light"></ion-icon>
+                <ion-label color="light">Basket</ion-label>
+              </ion-tab-button>
+          
+              <ion-tab-button tab="pin">
+                <ion-icon name="pin" color="light"></ion-icon>
+                <ion-label color="light">Contact us</ion-label>
+              </ion-tab-button>
+          
+              <ion-tab-button tab="setting">
+                <ion-icon name="settings" color="light"></ion-icon>
+                <ion-label color="light">Setting</ion-label>
+              </ion-tab-button>
+            </ion-tab-bar>
+          </ion-tabs>
+    </ion-toolbar>
+  </ion-footer>

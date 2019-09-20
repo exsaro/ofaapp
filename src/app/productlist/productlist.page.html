@@ -10,6 +10,20 @@
 </ion-header>
 
 <ion-content padding color="medium">
+
+    <ion-toolbar color="medium">
+        <ion-row nowrap class="category">
+            <ion-col size="4" *ngFor="let category of categories">
+                <ion-card>
+                    <ion-card-content>
+                      <ion-thumbnail><img [src]="category.image.src" [alt]="category.name"></ion-thumbnail>  
+                      {{category.name}}
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+      </ion-toolbar>
+
     <h4>Rice</h4>
 
     <ion-card color="light" (click)="getProducts(product)" *ngFor="let product of productList">
@@ -49,6 +63,8 @@
                 <ion-icon name="settings" color="light"></ion-icon>
                 <ion-label color="light">Setting</ion-label>
               </ion-tab-button>
+
+              
             </ion-tab-bar>
           </ion-tabs>
     </ion-toolbar>

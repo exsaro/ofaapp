@@ -31,6 +31,6 @@ export class ProductdetailsPage implements OnInit {
   }
   addtocart(cartvalue) {
     localStorage.setItem('cart', cartvalue);
-    console.log(cartvalue);
+    console.table(cartvalue);
   }
 }

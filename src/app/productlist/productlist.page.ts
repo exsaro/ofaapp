@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ProductlistPage implements OnInit {
 
   productList: any = [];
+  categories: any = [];
 
   constructor( private shoppingservice: ShoppingapiService, private router: Router) { }
 
@@ -20,6 +21,7 @@ export class ProductlistPage implements OnInit {
   }
 
   ngOnInit() {
+
     this.shoppingservice.WooCommerce.get('products')
     .then((response) => {
       this.productList = response.data;
@@ -28,6 +30,16 @@ export class ProductlistPage implements OnInit {
     .catch((error) => {
       console.log(error.response.data);
     });
+
+    this.shoppingservice.WooCommerce.get('products/categories')
+    .then((response) => {
+      this.categories = response.data;
+      console.log(this.categories);
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
+
   }
 
 }
