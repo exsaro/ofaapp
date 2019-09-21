@@ -20,13 +20,16 @@ export class ProductdetailsPage implements OnInit {
 
    this.activeRoute.params.subscribe(routeParams => {
     this.id = routeParams.id;
-    this.shoppingservice.WooCommerce.get(`products/${this.id}`)
-    .then((response) => {
-      this.product = response.data;
-     })
-    .catch((error) => {
-      console.log(error.response.data);
+    this.shoppingservice.getProduct(this.id).subscribe((res)=>{
+      this.product = res;
     });
+    // this.shoppingservice.WooCommerce.get(`products/${this.id}`)
+    // .then((response) => {
+    //   this.product = response.data;
+    //  })
+    // .catch((error) => {
+    //   console.log(error.response.data);
+    // });
   });
   }
   addtocart(cartvalue) {

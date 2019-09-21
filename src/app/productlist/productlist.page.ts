@@ -22,23 +22,35 @@ export class ProductlistPage implements OnInit {
 
   ngOnInit() {
 
-    this.shoppingservice.WooCommerce.get('products')
-    .then((response) => {
-      this.productList = response.data;
-      console.log(this.productList);
-    })
-    .catch((error) => {
-      console.log(error.response.data);
+    
+
+    this.shoppingservice.getAllCategories().subscribe((res)=>{
+      this.categories = res;
+      console.log(res);
+      this.shoppingservice.getAllProducts().subscribe((res)=>{
+        this.productList = res;
+        console.log(res);
+      });
     });
 
-    this.shoppingservice.WooCommerce.get('products/categories')
-    .then((response) => {
-      this.categories = response.data;
-      console.log(this.categories);
-    })
-    .catch((error) => {
-      console.log(error.response.data);
-    });
+
+    // this.shoppingservice.WooCommerce.get('products')
+    // .then((response) => {
+    //   this.productList = response.data;
+    //   console.log(this.productList);
+    // })
+    // .catch((error) => {
+    //   console.log(error.response.data);
+    // });
+
+    // this.shoppingservice.WooCommerce.get('products/categories')
+    // .then((response) => {
+    //   this.categories = response.data;
+    //   console.log(this.categories);
+    // })
+    // .catch((error) => {
+    //   console.log(error.response.data);
+    // });
 
   }
 
