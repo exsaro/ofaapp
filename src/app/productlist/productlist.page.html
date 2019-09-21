@@ -10,6 +10,20 @@
 </ion-header>
 
 <ion-content padding color="medium">
+
+    <ion-toolbar color="medium">
+        <ion-row nowrap class="category">
+            <ion-col size="4" *ngFor="let category of categories">
+                <ion-card no-margin [ngStyle]="{'background-color':category.description}">
+                    <ion-card-content text-center>
+                      <ion-thumbnail *ngIf="category.image != null"><img [src]="category.image['src']" [alt]="category.image['name']"></ion-thumbnail>  
+                      {{category.name}}
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+      </ion-toolbar>
+
     <h4>Rice</h4>
 
     <ion-card color="light" (click)="getProducts(product)" *ngFor="let product of productList">
@@ -35,20 +49,22 @@
     <ion-toolbar>
         <ion-tabs>
             <ion-tab-bar slot="bottom" color="danger">
-              <ion-tab-button tab="cart">
+              <ion-tab-button (click)="shoppingservice.navigateCart()">
                 <ion-icon name="cart" color="light"></ion-icon>
                 <ion-label color="light">Basket</ion-label>
               </ion-tab-button>
           
-              <ion-tab-button tab="pin">
+              <ion-tab-button (click)="shoppingservice.navigateContact()">
                 <ion-icon name="pin" color="light"></ion-icon>
                 <ion-label color="light">Contact us</ion-label>
               </ion-tab-button>
           
-              <ion-tab-button tab="setting">
+              <ion-tab-button (click)="shoppingservice.navigateSettings()">
                 <ion-icon name="settings" color="light"></ion-icon>
                 <ion-label color="light">Setting</ion-label>
               </ion-tab-button>
+
+              
             </ion-tab-bar>
           </ion-tabs>
     </ion-toolbar>

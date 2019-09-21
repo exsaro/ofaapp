@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'app-addtocart',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddtocartPage implements OnInit {
 
-  constructor() { }
+  addtocart:  any = [];
+
+  constructor(public storageService: StorageService) { }
 
   ngOnInit() {
+    this.storageService.getObject('addtocart').then(result => {
+      if (result != null) {
+        this.addtocart = result;
+        console.table('addtocart: '+ result);
+      }
+      }).catch(e => {
+      console.log('error: ', e);
+      });
   }
 
 }

@@ -1,9 +1,20 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>addtocart</ion-title>
-  </ion-toolbar>
+  <ion-toolbar color="orange">
+<ion-buttons slot="start">
+  <ion-back-button></ion-back-button>
+</ion-buttons>
+<ion-title>Check out</ion-title>
+</ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <div *ngFor="let cart of addtocart">
+    {{cart.name}}
+  </div>
+  
 </ion-content>
+
+<ion-footer>
+    <ion-button no-margin color="success" expand="full">Place order</ion-button>
+</ion-footer>

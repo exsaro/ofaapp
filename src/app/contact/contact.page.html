@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="orange">
+<ion-buttons slot="start">
+  <ion-back-button></ion-back-button>
+</ion-buttons>
+<ion-title>Contact us</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+        <ion-tab-bar slot="bottom" color="danger">
+          <ion-tab-button (click)="shoppingservice.navigateCart()">
+            <ion-icon name="cart" color="light"></ion-icon>
+            <ion-label color="light">Basket</ion-label>
+          </ion-tab-button>
+      
+          <ion-tab-button (click)="shoppingservice.navigateContact()">
+            <ion-icon name="pin" color="light"></ion-icon>
+            <ion-label color="light">Contact us</ion-label>
+          </ion-tab-button>
+      
+          <ion-tab-button (click)="shoppingservice.navigateSettings()">
+            <ion-icon name="settings" color="light"></ion-icon>
+            <ion-label color="light">Setting</ion-label>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+</ion-toolbar>
+</ion-footer>
