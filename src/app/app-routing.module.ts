@@ -9,6 +9,10 @@ const routes: Routes = [
   { path: 'addtocart', loadChildren: './addtocart/addtocart.module#AddtocartPageModule' },
   { path: 'searchresult', loadChildren: './searchresult/searchresult.module#SearchresultPageModule' },
   { path: 'productdetails/:id', loadChildren: './productdetails/productdetails.module#ProductdetailsPageModule' },
+  { path: 'contact', loadChildren: './contact/contact.module#ContactPageModule' },
+  { path: 'setting', loadChildren: './setting/setting.module#SettingPageModule' },
+  { path: 'signup', loadChildren: './signup/signup.module#SignupPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingapiService } from '../services/shoppingapi.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'app-productdetails',
@@ -10,9 +11,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProductdetailsPage implements OnInit {
   id: number;
   product: any = [];
-   constructor( private shoppingservice: ShoppingapiService, private router: Router, private activeRoute: ActivatedRoute) {
+   constructor( 
+     public shoppingservice: ShoppingapiService, 
+     private router: Router, 
+     private activeRoute: ActivatedRoute, 
+     public storageService: StorageService) {
 
 
+  }
+
+  addtocart(cartvalue) {
+    this.storageService.setObject('addtocart', cartvalue);
   }
 
 
@@ -32,8 +41,5 @@ export class ProductdetailsPage implements OnInit {
     // });
   });
   }
-  addtocart(cartvalue) {
-    localStorage.setItem('cart', cartvalue);
-    console.table(cartvalue);
-  }
+  
 }

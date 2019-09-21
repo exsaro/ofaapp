@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 // import WooCommerceRestApi from '@woocommerce/woocommerce-rest-api';
 import { HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ShoppingapiService {
 
   
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route: Router) { }
 
     url = 'https://www.softwebsystems.com/ofa/'; // Your store URL
     consumerKey = 'ck_6ae751f70b993795144aa67a1e1b6dae6cf89b6a'; // Your consumer key
@@ -27,7 +28,20 @@ export class ShoppingapiService {
     }
 
     getProduct(id){
+      // tslint:disable-next-line:max-line-length
       return this.http.get(`${this.url}/wp-json/wc/v3/products/${id}?consumer_key=${this.consumerKey}&consumer_secret=${this.consumerSecret}`);
+    }
+
+    navigateCart(){
+      this.route.navigate(['/addtocart']);
+    }
+
+    navigateContact(){
+      this.route.navigate(['/contact']);
+    }
+
+    navigateSettings(){
+      this.route.navigate(['/setting']);
     }
 
   }

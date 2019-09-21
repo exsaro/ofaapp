@@ -13,7 +13,7 @@ export class ProductlistPage implements OnInit {
   productList: any = [];
   categories: any = [];
 
-  constructor( private shoppingservice: ShoppingapiService, private router: Router) { }
+  constructor( public shoppingservice: ShoppingapiService, private router: Router) { }
 
   getProducts(product) {
     console.log(product);
