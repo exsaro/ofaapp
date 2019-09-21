@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class ShoppingapiService {
 
-  
-  
+
+
   constructor(private http: HttpClient, private route: Router) { }
 
     url = 'https://www.softwebsystems.com/ofa/'; // Your store URL
@@ -18,29 +18,29 @@ export class ShoppingapiService {
     version = 'wc/v3'; // WooCommerce WP REST API version
     queryStringAuth = true;
 
-    getAllProducts(){
+    getAllProducts() {
       return this.http.get(`${this.url}/wp-json/wc/v3/products?consumer_key=${this.consumerKey}&consumer_secret=${this.consumerSecret}`);
     }
 
-    getAllCategories(){
+    getAllCategories() {
       // tslint:disable-next-line:max-line-length
       return this.http.get(`${this.url}/wp-json/wc/v3/products/categories?consumer_key=${this.consumerKey}&consumer_secret=${this.consumerSecret}`);
     }
 
-    getProduct(id){
+    getProduct(id) {
       // tslint:disable-next-line:max-line-length
       return this.http.get(`${this.url}/wp-json/wc/v3/products/${id}?consumer_key=${this.consumerKey}&consumer_secret=${this.consumerSecret}`);
     }
 
-    navigateCart(){
+    navigateCart() {
       this.route.navigate(['/addtocart']);
     }
 
-    navigateContact(){
+    navigateContact() {
       this.route.navigate(['/contact']);
     }
 
-    navigateSettings(){
+    navigateSettings() {
       this.route.navigate(['/setting']);
     }
 

@@ -8,15 +8,23 @@ import { StorageService } from '../storage.service';
 })
 export class AddtocartPage implements OnInit {
 
-  addtocart:  any = [];
+  addtocart: Array <any>;
 
   constructor(public storageService: StorageService) { }
 
   ngOnInit() {
     this.storageService.getObject('addtocart').then(result => {
       if (result != null) {
-        this.addtocart = result;
-        console.table('addtocart: '+ result);
+        const arr = [];
+        // tslint:disable-next-line: only-arrow-functions
+        Object.keys(result).map(function(key) {
+            arr.push({[key]: result[key]});
+            return arr;
+        });
+        console.log(arr);
+
+        this.addtocart = arr;
+        console.log(result);
       }
       }).catch(e => {
       console.log('error: ', e);

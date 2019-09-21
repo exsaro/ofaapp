@@ -31,12 +31,12 @@ export class StorageService {
       return null;
     } catch (reason) {
     console.log(reason);
-      return null;
+    return null;
     }
   }
 
   // set a key/value object
-  async setObject(key: string, object: Object) {
+  async setObject(key: string, object: object) {
     try {
       const result = await this.storage.set(key, JSON.stringify(object));
       console.log('set Object in storage: ' + result);
@@ -65,7 +65,7 @@ export class StorageService {
   remove(key: string) {
     this.storage.remove(key);
   }
-  
+
   //  delete all data from your application:
   clear() {
     this.storage.clear();

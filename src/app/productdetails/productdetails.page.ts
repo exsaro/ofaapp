@@ -11,17 +11,21 @@ import { StorageService } from '../storage.service';
 export class ProductdetailsPage implements OnInit {
   id: number;
   product: any = [];
-   constructor( 
-     public shoppingservice: ShoppingapiService, 
-     private router: Router, 
-     private activeRoute: ActivatedRoute, 
+   constructor(
+     public shoppingservice: ShoppingapiService,
+     private router: Router,
+     private activeRoute: ActivatedRoute,
      public storageService: StorageService) {
 
 
   }
 
   addtocart(cartvalue) {
-    this.storageService.setObject('addtocart', cartvalue);
+    const obj = {
+      id : cartvalue.id,
+      name : cartvalue.name
+    };
+    this.storageService.setObject('addtocart', obj);
   }
 
 
@@ -29,7 +33,7 @@ export class ProductdetailsPage implements OnInit {
 
    this.activeRoute.params.subscribe(routeParams => {
     this.id = routeParams.id;
-    this.shoppingservice.getProduct(this.id).subscribe((res)=>{
+    this.shoppingservice.getProduct(this.id).subscribe((res) => {
       this.product = res;
     });
     // this.shoppingservice.WooCommerce.get(`products/${this.id}`)
@@ -41,5 +45,5 @@ export class ProductdetailsPage implements OnInit {
     // });
   });
   }
-  
+
 }
