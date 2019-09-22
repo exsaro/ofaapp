@@ -12,14 +12,14 @@
 <ion-content padding color="medium">
 
     <ion-toolbar color="medium">
-        <ion-row nowrap class="category">
-            <ion-col size="4" *ngFor="let category of categories">
-                <ion-card no-margin [ngStyle]="{'background-color':category.description}">
-                    <ion-card-content text-center>
-                      <ion-thumbnail *ngIf="category.image != null"><img [src]="category.image['src']" [alt]="category.image['name']"></ion-thumbnail>  
-                      {{category.name}}
-                    </ion-card-content>
-                </ion-card>
+        <ion-row class="category">
+            <ion-col size="12" >
+                <ion-segment scrollable>
+                    <ion-segment-button text-center [ngStyle]="{'background-color':category.description}" *ngFor="let category of categories">
+                        <ion-thumbnail *ngIf="category.image != null"><img [src]="category.image['src']" [alt]="category.image['name']"></ion-thumbnail>  
+                        <ion-label>{{category.name}}</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
             </ion-col>
         </ion-row>
       </ion-toolbar>
