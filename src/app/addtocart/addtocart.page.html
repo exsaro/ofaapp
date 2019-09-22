@@ -11,25 +11,25 @@
 
     
 
-<ion-card color="light">
+<ion-card color="light" *ngFor="let cart of addtocart">
     <ion-fab>
-        <ion-fab-button color="danger" size="small"><ion-icon name="trash"></ion-icon></ion-fab-button>
+        <ion-fab-button color="danger" size="small" (click)="removecart(cart)"><ion-icon name="trash"></ion-icon></ion-fab-button>
     </ion-fab>
     <ion-card-content>
       <ion-grid no-padding>
           <ion-row>
               <ion-col size="4" no-padding>
-                <img src="image.src" alt="">
+                <img [src]="cart.images[0].src" [alt]="cart.images[0].src">
               </ion-col>
               <ion-col size="8" padding-start>
-                  <ion-card-title>product.name</ion-card-title>
+                  <ion-card-title>{{cart.name}}</ion-card-title>
                   <ion-card-subtitle>fsdfsdf sdfsd sdf sdfsdfsdf sdfsdf</ion-card-subtitle>
                   <div class="qnty">
                     <ion-icon name="add-circle"></ion-icon>
                     <ion-input no-padding value="1"></ion-input>
                     <ion-icon name="remove-circle"></ion-icon>
                   </div>
-                  <div class="price" text-right>99.88</div>
+                  <div class="price" text-right>{{cart.price}}</div>
               </ion-col>
             </ion-row>
       </ion-grid>

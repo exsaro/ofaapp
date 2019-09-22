@@ -71,7 +71,9 @@
         "plugins": {
             "cordova-plugin-device": {},
             "cordova-plugin-ionic-keyboard": {},
-            "cordova-plugin-ionic-webview": {},
+            "cordova-plugin-ionic-webview": {
+                "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+            },
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},

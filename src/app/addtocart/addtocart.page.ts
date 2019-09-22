@@ -13,22 +13,32 @@ export class AddtocartPage implements OnInit {
   constructor(public storageService: StorageService) { }
 
   ngOnInit() {
+    this.listcart();
+  }
+  listcart(){
     this.storageService.getObject('addtocart').then(result => {
       if (result != null) {
-        const arr = [];
-        // tslint:disable-next-line: only-arrow-functions
-        Object.keys(result).map(function(key) {
-            arr.push({[key]: result[key]});
-            return arr;
-        });
-        console.log(arr);
+          // console.log(arr);
 
-        this.addtocart = arr;
-        console.log(result);
+        this.addtocart = result;
+       // console.log(result);
       }
       }).catch(e => {
       console.log('error: ', e);
       });
   }
-
+  removecart(value = []){
+   this.storageService.getObject('addtocart').then(cart => {
+      for (let product of cart) {
+        if (value["name"] === product.name) {
+          //value["product_Status"] = "New";
+          cart.splice(cart.indexOf(product), 1);
+            break;
+        }
+      }
+      this.storageService.setObject('addtocart', cart);
+      this.listcart();
+    });
+   
+  }  
 }

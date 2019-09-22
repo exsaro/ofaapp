@@ -21,11 +21,38 @@ export class ProductdetailsPage implements OnInit {
   }
 
   addtocart(cartvalue) {
-    const obj = {
-      id : cartvalue.id,
-      name : cartvalue.name
-    };
-    this.storageService.setObject('addtocart', obj);
+    
+  let cartin: any = [];
+ 
+   this.storageService.getObject('addtocart').then(cart => {
+      if (cart != null){
+        if (cart !== ""){
+          let arry: any = [];
+          for (let prop in cart) {
+            arry[prop] =  cart[prop];
+          }
+          cartin = arry;
+          cartin.push(cartvalue);
+            }
+        else{
+          if (cartvalue["name"] !=cart["name"] ){
+            cartin.push(cartvalue);
+            }
+        }  
+        }else{
+          cartin.push(cartvalue);
+        }
+            
+            for(var i=0;i<cartin.length;i++){
+              if(cartin[i].name === cartvalue["name"])
+              {  
+                cartin[i].status = "Cart";
+              }           
+            }
+    
+      this.storageService.setObject('addtocart', cartin);
+    });
+    
   }
 
 
