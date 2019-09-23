@@ -8,9 +8,6 @@
 </ion-header>
 
 <ion-content padding color="medium">
-
-    
-
 <ion-card color="light" *ngFor="let cart of addtocart">
     <ion-fab>
         <ion-fab-button color="danger" size="small" (click)="removecart(cart)"><ion-icon name="trash"></ion-icon></ion-fab-button>
@@ -35,8 +32,7 @@
       </ion-grid>
     </ion-card-content>
 </ion-card>
-
-  
+<ion-spinner *ngIf="spinner"></ion-spinner>
 </ion-content>
 
 <ion-footer>

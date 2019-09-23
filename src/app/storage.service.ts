@@ -39,7 +39,7 @@ export class StorageService {
   async setObject(key: string, object: Object) {
     try {
       const result = await this.storage.set(key, JSON.stringify(object));
-      console.log('set Object in storage: ' + result);
+    //  console.log('set Object in storage: ' + result);
       return true;
     } catch (reason) {
       console.log(reason);

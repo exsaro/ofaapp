@@ -14,8 +14,8 @@
     <ion-toolbar color="medium">
         <ion-row class="category">
             <ion-col size="12" >
-                <ion-segment scrollable>
-                    <ion-segment-button text-center [ngStyle]="{'background-color':category.description}" *ngFor="let category of categories">
+                <ion-segment scrollable [(ngModel)]="catemodel">
+                    <ion-segment-button (ionSelect)="segmentButtonClicked($event,category)" text-center [ngStyle]="{'background-color':category.description}" *ngFor="let category of categories" [value]="category.id">
                         <ion-thumbnail *ngIf="category.image != null"><img [src]="category.image['src']" [alt]="category.image['name']"></ion-thumbnail>  
                         <ion-label>{{category.name}}</ion-label>
                     </ion-segment-button>
@@ -24,10 +24,10 @@
         </ion-row>
       </ion-toolbar>
 
-    <h4>Rice</h4>
-
-    <ion-card color="light" (click)="getProducts(product)" *ngFor="let product of productList">
-        <ion-card-content>
+    <h4>{{selected_cate}}</h4>
+    <ion-spinner *ngIf="spinner"></ion-spinner>
+    <ion-card color="light" (click)="getProducts(product)" *ngFor="let product of productList" >
+        <ion-card-content *ngIf="content">
           <ion-grid no-padding>
               <ion-row>
                   <ion-col size="4" no-padding>
@@ -42,10 +42,11 @@
           </ion-grid>
         </ion-card-content>
     </ion-card>
-
+   
 </ion-content>
 
 <ion-footer>
+   
     <ion-toolbar>
         <ion-tabs>
             <ion-tab-bar slot="bottom" color="danger">

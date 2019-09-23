@@ -18,8 +18,8 @@ export class ShoppingapiService {
     version = 'wc/v3'; // WooCommerce WP REST API version
     queryStringAuth = true;
 
-    getAllProducts() {
-      return this.http.get(`${this.url}/wp-json/wc/v3/products?consumer_key=${this.consumerKey}&consumer_secret=${this.consumerSecret}`);
+    getAllProducts(categories) {
+      return this.http.get(`${this.url}/wp-json/wc/v3/products?category=${categories}&consumer_key=${this.consumerKey}&consumer_secret=${this.consumerSecret}`);
     }
 
     getAllCategories() {
