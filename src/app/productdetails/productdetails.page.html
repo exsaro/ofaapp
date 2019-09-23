@@ -12,17 +12,18 @@
   <ion-img *ngFor="let image of product.images" [src]="image.src"></ion-img>
   <h1>{{product.name}}</h1>
   <p [innerHTML]="product.description"></p>
-  <ion-grid no-padding>
-      <ion-row>
-          <ion-col no-padding><ion-button (click)="shoppingservice.navigateCart()" color="success" expand="full">Check out</ion-button></ion-col>
-          <ion-col no-padding><ion-button (click)="addtocart(product)" color="warning" expand="full">Add to cart</ion-button></ion-col>
-      </ion-row>
-  </ion-grid>
+  
 </ion-content>
 
 
 <ion-footer>
-   
+
+  <ion-grid no-padding>
+      <ion-row>
+          <ion-col no-padding><ion-button no-margin (click)="shoppingservice.navigateCart()" color="success" expand="full">Check out</ion-button></ion-col>
+          <ion-col no-padding><ion-button no-margin (click)="addtocart(product)" color="warning" expand="full">Add to cart</ion-button></ion-col>
+      </ion-row>
+  </ion-grid> 
     
     <ion-toolbar>
         <ion-tabs>
