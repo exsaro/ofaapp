@@ -3,8 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: '', redirectTo: 'productlist', pathMatch: 'full' },
+ // { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   { path: 'productlist', loadChildren: './productlist/productlist.module#ProductlistPageModule' },
   { path: 'addtocart', loadChildren: './addtocart/addtocart.module#AddtocartPageModule' },
   { path: 'searchresult', loadChildren: './searchresult/searchresult.module#SearchresultPageModule' },
