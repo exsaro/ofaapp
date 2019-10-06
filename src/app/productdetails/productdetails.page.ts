@@ -30,47 +30,43 @@ export class ProductdetailsPage implements OnInit {
 
   let cartin: any = [];
  
- await this.storageService.getObject('addtocart').then(cart => {
-      if (cart != null){
-     
+  await this.storageService.getObject('addtocart').then(cart => {
+      if (cart != null) {
           let arry: any = [];
           for (let prop in cart) {
-            if(cart[prop].id != cartvalue.id){
+            if (cart[prop].id != cartvalue.id) {
             arry[prop] =  cart[prop];
           }
-          else{
-            this.presentToast("Already Added");
+          else {
+            this.presentToast('Already Added');
             return false;
           }
           }
           console.log(arry);
           cartin = arry;
           cartin.push(cartvalue);
-            
         // else{
         //   if (cartvalue["name"] !=cart["name"] ){
         //     cartin.push(cartvalue);
         //     }
         // }  
-        }else{
+        } else {
           cartin.push(cartvalue);
         }
-            
             // for(var i=0;i<cartin.length;i++){
             //   if(cartin[i].name === cartvalue["name"])
-            //   {  
+            //   {
             //     cartin[i].status = "Cart";
-            //   }           
+            //   }
             // }
-    
       this.storageService.setObject('addtocart', cartin);
     //  this.spinner = false;
-      this.presentToast("Added to cart!");
+      this.presentToast('Added to cart!');
     });
     } catch (reason) {
       console.log(reason);
       return false;
-    } 
+    }
   }
   async presentToast(message) {
      const toast = await this.toastController.create({

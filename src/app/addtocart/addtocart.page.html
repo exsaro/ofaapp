@@ -20,13 +20,13 @@
               </ion-col>
               <ion-col size="8" padding-start>
                   <ion-card-title>{{cart.name}}</ion-card-title>
-                  <ion-card-subtitle>fsdfsdf sdfsd sdf sdfsdfsdf sdfsdf</ion-card-subtitle>
+                  <ion-card-subtitle [innerHtml]="cart.description"></ion-card-subtitle>
                   <div class="qnty">
                     <ion-icon name="add-circle"></ion-icon>
-                    <ion-input no-padding value="1"></ion-input>
+                    <ion-input no-padding value="1" disabled></ion-input>
                     <ion-icon name="remove-circle"></ion-icon>
                   </div>
-                  <div class="price" text-right>{{cart.price}}</div>
+                  <div class="price" text-right [innerHtml]='cart.price_html'></div>
               </ion-col>
             </ion-row>
       </ion-grid>

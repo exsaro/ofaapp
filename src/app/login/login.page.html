@@ -1,9 +1,38 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
+  <ion-toolbar color="orange">
+<ion-buttons slot="start">
+  <ion-back-button></ion-back-button>
+</ion-buttons>
+<ion-title>Login your account</ion-title>
+</ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding color="medium">
+
+  <ion-item lines="none" color="medium">
+    <ion-label position="floating">Email ID</ion-label>
+    <ion-input type="email"></ion-input>
+  </ion-item>
+  <ion-item lines="none" padding-bottom color="medium">
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+  <ion-item lines="none" color="medium">
+    <ion-button no-margin color="success" expand="full">Login</ion-button>
+  </ion-item>
+  <ion-toolbar text-center lines="none" color="medium" padding-bottom>
+    <p><a href="" class="forgot">Forgot password</a></p>
+  </ion-toolbar>
+
+  <ion-item lines="none" color="medium">
+    <ion-button margin class="fb"><ion-icon name="logo-facebook"></ion-icon></ion-button>
+    <ion-button margin class="ggl" color="danger"><ion-icon name="logo-google"></ion-icon></ion-button>
+  </ion-item>
+
+  
 
 </ion-content>
+
+<ion-footer padding text-center>
+  <p no-margin>Dont have an account <a href="#">Sign up</a></p>
+</ion-footer>
