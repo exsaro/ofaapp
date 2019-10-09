@@ -6,11 +6,11 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicStorageModule } from '@ionic/storage';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from '../app/common/header/header.component';
 import { FooterComponent } from '../app/common/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
+
 
 
 @NgModule({
