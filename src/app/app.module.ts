@@ -10,13 +10,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from '../app/common/header/header.component';
 import { FooterComponent } from '../app/common/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [AppComponent,HeaderComponent,FooterComponent],
   entryComponents: [],
-  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), IonicStorageModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), IonicStorageModule.forRoot(), AppRoutingModule,FormsModule, ReactiveFormsModule],
   providers: [
     StatusBar,
     SplashScreen,

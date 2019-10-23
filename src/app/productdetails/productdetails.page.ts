@@ -75,7 +75,10 @@ export class ProductdetailsPage implements OnInit {
     });
     toast.present();
   }
-
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400
+  };
 
 
   ngOnInit() {

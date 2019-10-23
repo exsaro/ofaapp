@@ -6,14 +6,26 @@
   <ion-title>Product details</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-spinner *ngIf="spinner"></ion-spinner>
 <ion-content padding *ngIf="content">
- 
+<ion-slides pager="true" [options]="slideOpts">
+  <ion-slide *ngFor="let image of product.images">
+    <ion-img [src]="image.src"></ion-img>
+  </ion-slide>
+</ion-slides>
+
+
+
+<h1>{{product.name}}</h1>
+<p [innerHTML]="product.description"></p>
+</ion-content>
+<!-- </ion-content>
   <ion-img *ngFor="let image of product.images" [src]="image.src"></ion-img>
   <h1>{{product.name}}</h1>
   <p [innerHTML]="product.description"></p>
   
-</ion-content>
+</ion-content> -->
 
 
 <ion-footer>

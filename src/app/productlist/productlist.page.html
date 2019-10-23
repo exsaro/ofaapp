@@ -1,7 +1,11 @@
 <ion-header>
   <ion-toolbar color="orange">
-    <ion-title text-center><h1>OFA</h1></ion-title>
-    <div slot="end" padding></div>
+    <ion-title text-center><h1>OFA</h1>
+   
+  </ion-title>
+  
+    <div slot="end" padding></div> 
+    
   </ion-toolbar>
   <ion-toolbar color="orange" class="search">
     <ion-label color="light">Welcome <strong>Shara</strong></ion-label>
@@ -31,7 +35,7 @@
           <ion-grid no-padding>
               <ion-row>
                   <ion-col size="4" no-padding>
-                    <img *ngFor="let image of product.images" [src]="image.src" alt="">
+                    <img [src]="product.images[0].src" alt="">
                   </ion-col>
                   <ion-col size="8" padding-start>
                       <ion-card-title>{{product.name}}</ion-card-title>
