@@ -33,7 +33,7 @@ private prepareHeader(headers: HttpHeaders | null): object {
   // if(Authendication){
   //   headers = headers.set('Authorization',"Bearer " +Authendication);
   // }
-  //headers = headers.set('Accept', 'application/json');
+  headers = headers.set('Accept', 'application/json');
 //  headers = headers.set('observe', 'response');
   return {
       headers: headers,
