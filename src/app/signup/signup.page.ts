@@ -33,17 +33,16 @@ signupfrm: FormGroup;
   onSubmit() {
      console.log(this.signupfrm.value["fname"]);
 let obj ={
-  // email : this.signupfrm.value["email"],
-  // first_name : this.signupfrm.value["fname"],
-  // last_name : this.signupfrm.value["lname"],
-  // username : this.signupfrm.value["email"],
-  // password : this.signupfrm.value["pwd"],
-  // billing: {
-  //   email : this.signupfrm.value["email"],
-  //   phone :  this.signupfrm.value["mobile"]
-  // }
-  "email":"hari@sis.in",
-};
+  email : this.signupfrm.value["email"],
+  first_name : this.signupfrm.value["fname"],
+  last_name : this.signupfrm.value["lname"],
+  username : this.signupfrm.value["email"],
+  password : this.signupfrm.value["pwd"],
+  billing: {
+    email : this.signupfrm.value["email"],
+    phone :  this.signupfrm.value["mobile"]
+  }
+ };
   this.shoppingservice.usersignup(obj).subscribe((res) => {
 console.log(res);
   },
