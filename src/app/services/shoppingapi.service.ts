@@ -20,7 +20,6 @@ export class ShoppingapiService {
     
     usersignup(data){
       console.log(data);
-      let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
       return this.httpservice.post(`${this.url}/wp-json/wc/v3/customers?consumer_key=${this.consumerKey}&consumer_secret=${this.consumerSecret}`,JSON.stringify(data));
      //return this.http.post('https://httpbin.org/post',JSON.stringify(data));
     }

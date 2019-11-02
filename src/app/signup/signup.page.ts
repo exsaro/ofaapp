@@ -44,7 +44,8 @@ let obj ={
   }
  };
   this.shoppingservice.usersignup(obj).subscribe((res) => {
-console.log(res);
+    var res1 = res.split("</body>");
+  console.log(JSON.parse(res1[1]));
   },
   (err)=>{
     console.log(err);
