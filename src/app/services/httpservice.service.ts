@@ -27,19 +27,20 @@ public delete(url, id?): Observable<any> {
 }
 
 private prepareHeader(headers: HttpHeaders | null): object {
-  console.log(headers);
   headers = headers || new HttpHeaders();
   headers = headers.set('Content-Type', 'application/json');
   // const Authendication = localStorage.getItem('Auth');
   // if(Authendication){
   //   headers = headers.set('Authorization',"Bearer " +Authendication);
   // }
-  headers = headers.set('Accept', 'application/json, */*');
+  headers = headers.set('Accept', 'application/json, text/html, */*');
   //headers = headers.set('Access-Control-Allow-Origin', '*');
   // headers = headers.set('cache-control', 'no-cache');
-console.log(headers);
+
   return {
       headers: headers,
+      observe : "body",
+      responseType : "text"
       }
 }
 }
