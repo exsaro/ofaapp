@@ -10,7 +10,7 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-signupfrm: FormGroup;
+
   uploadForm: any;
     constructor(private formBuilder: FormBuilder, public shoppingservice: ShoppingapiService,
      private router: Router,
@@ -20,13 +20,13 @@ signupfrm: FormGroup;
 
   
       }
-
+      signupfrm: FormGroup;
   ngOnInit() {
     this.signupfrm = this.formBuilder.group({
-      fname:  ['', [Validators.required]],
+      fname: ['', [Validators.required]],
       lname: ['', [Validators.required]],
-      mobile: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      mobile: ['', [Validators.required,Validators.pattern(/^(\+)?\d+$/)]],
+      email: ['', [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
       pwd:  ['', [Validators.required]]
     });
   }
@@ -43,13 +43,13 @@ let obj ={
     phone :  this.signupfrm.value["mobile"]
   }
  };
-  this.shoppingservice.usersignup(obj).subscribe((res) => {
-    var res1 = res.split("</body>");
-  console.log(JSON.parse(res1[1]));
-  },
-  (err)=>{
-    console.log(err);
-  });
+  // this.shoppingservice.usersignup(obj).subscribe((res) => {
+  //   var res1 = res.split("</body>");
+  // console.log(JSON.parse(res1[1]));
+  // },
+  // (err)=>{
+  //   console.log(err);
+  // });
   }
   id(id: any) {
     throw new Error("Method not implemented.");

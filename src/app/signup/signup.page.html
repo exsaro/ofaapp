@@ -31,7 +31,7 @@
   </ion-item>
 
   <ion-item lines="none" color="medium">
-    <ion-button no-margin color="success" (click)="onSubmit()" expand="full">Sign up</ion-button>
+    <ion-button no-margin color="success"  [disabled]="!signupfrm.valid" (click)="onSubmit()" expand="full">Sign up</ion-button>
   </ion-item>
 </form>
 </ion-content>
