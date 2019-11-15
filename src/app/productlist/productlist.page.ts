@@ -20,6 +20,7 @@ export class ProductlistPage implements OnInit {
   getProducts(product) {
     this.router.navigate(['/productdetails', product.id]);
   }
+  
   segmentButtonClicked(ev:any,categories){
     this.spinner = true;
     this.content = false;

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="orange">
     <ion-title text-center><h1>OFA</h1></ion-title>
-    <ion-buttons slot="end" padding>
+    <ion-buttons slot="end" padding (click)="shoppingservice.navigateLogin()">
         <ion-icon name="contact"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
@@ -60,14 +60,7 @@
               <ion-tab-button (click)="shoppingservice.navigateContact()">
                 <ion-icon name="pin" color="light"></ion-icon>
                 <ion-label color="light">Contact us</ion-label>
-              </ion-tab-button>
-          
-              <ion-tab-button (click)="shoppingservice.navigateSettings()">
-                <ion-icon name="settings" color="light"></ion-icon>
-                <ion-label color="light">Setting</ion-label>
-              </ion-tab-button>
-
-              
+              </ion-tab-button> 
             </ion-tab-bar>
           </ion-tabs>
     </ion-toolbar>

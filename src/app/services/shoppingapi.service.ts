@@ -50,4 +50,8 @@ export class ShoppingapiService {
       this.route.navigate(['/setting']);
     }
 
+    navigateLogin(){
+      this.route.navigate(['/login']);
+    }
+
   }
