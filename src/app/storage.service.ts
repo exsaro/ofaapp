@@ -14,6 +14,7 @@ export class StorageService {
       const result = await this.storage.set(key, value);
       console.log('set string in storage: ' + result);
       return true;
+      
     } catch (reason) {
       console.log(reason);
       return false;

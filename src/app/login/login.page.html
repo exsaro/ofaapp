@@ -8,17 +8,17 @@
 </ion-header>
 
 <ion-content padding color="medium">
-
+<form [formGroup]="loginfrm">
   <ion-item lines="none" color="medium">
     <ion-label position="floating">Email ID</ion-label>
-    <ion-input type="email"></ion-input>
+    <ion-input type="email" name="email" formControlName="email" #email></ion-input>
   </ion-item>
   <ion-item lines="none" padding-bottom color="medium">
     <ion-label position="floating">Password</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input type="password" name="pwd" formControlName="pwd" #pwd></ion-input>
   </ion-item>
   <ion-item lines="none" color="medium">
-    <ion-button no-margin color="success" expand="full">Login</ion-button>
+    <ion-button no-margin color="success" [disabled]="!loginfrm.valid" (click)="onLogin()" expand="full">Login</ion-button>
   </ion-item>
   <ion-toolbar text-center lines="none" color="medium" padding-bottom>
     <p><a href="" class="forgot">Forgot password</a></p>
@@ -29,7 +29,7 @@
     <ion-button margin class="ggl" color="danger"><ion-icon name="logo-google"></ion-icon></ion-button>
   </ion-item>
 
-  
+</form>
 
 </ion-content>
 

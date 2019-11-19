@@ -23,6 +23,9 @@ export class ShoppingapiService {
       return this.httpservice.post(`${this.url}/wp-json/wc/v3/customers?consumer_key=${this.consumerKey}&consumer_secret=${this.consumerSecret}`,JSON.stringify(data));
      //return this.http.post('https://httpbin.org/post',JSON.stringify(data));
     }
+    userlogin(data){
+      return this.httpservice.post(`${this.url}/wp-json/jwt-auth/v1/token`,data);
+    }
 
     getAllProducts(categories) {
       return this.http.get(`${this.url}/wp-json/wc/v3/products?category=${categories}&consumer_key=${this.consumerKey}&consumer_secret=${this.consumerSecret}`);
