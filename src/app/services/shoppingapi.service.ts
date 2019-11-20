@@ -26,6 +26,10 @@ export class ShoppingapiService {
     userlogin(data){
       return this.httpservice.post(`${this.url}/wp-json/jwt-auth/v1/token`,data);
     }
+    loginvalidate(data){
+      const headers = new HttpHeaders().append('Authorization', 'Bearer ' +data.token);
+      return this.httpservice.post(`${this.url}/wp-json/jwt-auth/v1/token/validate`,data,headers)
+    }
 
     getAllProducts(categories) {
       return this.http.get(`${this.url}/wp-json/wc/v3/products?category=${categories}&consumer_key=${this.consumerKey}&consumer_secret=${this.consumerSecret}`);

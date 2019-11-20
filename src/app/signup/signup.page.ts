@@ -46,16 +46,25 @@ let obj ={
   this.shoppingservice.usersignup(obj).subscribe((res) => {
     var res1 = res.split("</body>");
   console.log(JSON.parse(res1[1]));
- 
+  this.presentToast('Registration success')
+  this.router.navigate(['/login']);
   },
   (err)=>{
     var resp = JSON.parse(err.error);
-    alert(resp.message);
+    this.presentToast(resp.message)
     this.signupfrm.reset();
   });
   }
-  id(id: any) {
-    throw new Error("Method not implemented.");
-  }
+  async presentToast(message) {
+    const toast = await this.toastController.create({
+     message: message,
+     duration: 4000
+   });
+   toast.present();
+ }
+ slideOpts = {
+   initialSlide: 1,
+   speed: 400
+ };
 
 }
