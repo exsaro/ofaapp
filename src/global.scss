@@ -24,3 +24,17 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.price{
+    del{
+        color: #ff0000;
+        .amount{
+            font-size: 14px;
+            color: #ff0000;
+        }
+    }
+    ins{
+        text-decoration: none;
+    }
+}

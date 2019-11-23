@@ -1,18 +1,40 @@
 <ion-header>
   <ion-toolbar color="orange">
-    <ion-title text-center><h1>OFA</h1></ion-title>
-    <ion-buttons slot="end" padding>
-        <ion-icon name="contact"></ion-icon>
-    </ion-buttons>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>Profile</ion-title>
   </ion-toolbar>
-  <ion-toolbar color="orange" class="search">
-    <ion-label color="light">Welcome <strong>Shara</strong></ion-label>
-    <ion-searchbar placeholder="Search products"></ion-searchbar>
+  <ion-toolbar color="orange" class="search ion-padding-bottom" text-center >
+      <div><ion-icon name="contact"></ion-icon></div>
+    <ion-label color="light"><strong>Shara Raj</strong></ion-label>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding color="medium">
 
   Profile page
 
 </ion-content>
+
+<ion-footer class="ion-padding-top">
+    <div text-center>
+    <ion-button color="success" class="ion-margin-bottom" (click)="shoppingservice.logout()" routerLink="/" routerDirection="root">Logout</ion-button>
+  </div>
+   
+    <ion-toolbar>
+        <ion-tabs>
+            <ion-tab-bar slot="bottom" color="danger">
+              <ion-tab-button (click)="shoppingservice.navigateCart()">
+                <ion-icon name="cart" color="light"></ion-icon>
+                <ion-label color="light">Basket</ion-label>
+              </ion-tab-button>
+          
+              <ion-tab-button (click)="shoppingservice.navigateContact()">
+                <ion-icon name="pin" color="light"></ion-icon>
+                <ion-label color="light">Contact us</ion-label>
+              </ion-tab-button> 
+            </ion-tab-bar>
+          </ion-tabs>
+    </ion-toolbar>
+  </ion-footer>

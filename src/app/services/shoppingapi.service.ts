@@ -61,7 +61,7 @@ export class ShoppingapiService {
 
     logout(){
       this.storageService.remove('auth');
-      this.route.navigate(['/login']);
+      this.route.navigate(['/']);
     }
 
     async navigateLogin(){
@@ -72,13 +72,9 @@ export class ShoppingapiService {
            if(response.data.status == 200){
             this.route.navigate(['/profile']);
             }
-       
-         },
-         (err)=>{
-           var resp = JSON.parse(err.error);
+         })
+        }else{
            this.route.navigate(['/login']);
-         });
-        
         }
         }).catch(e => {
          this.route.navigate(['/login']);
