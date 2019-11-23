@@ -45,7 +45,7 @@ this.shoppingservice.userlogin(obj).subscribe((res) => {
 this.storageService.set('auth',response.token);
 this.presentToast('User logged in successfully');
 this.loginfrm.reset();
-this.router.navigate(['/']);
+this.router.navigate(['/profile']);
 },
 (err)=>{
   var resp = JSON.parse(err.error);

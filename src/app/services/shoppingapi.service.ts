@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { HttpserviceService } from './httpservice.service';
+import { StorageService } from '../storage.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +12,7 @@ export class ShoppingapiService {
 
 
 
-  constructor(private http: HttpClient, private httpservice: HttpserviceService, private route: Router) { }
+  constructor(private http: HttpClient, private httpservice: HttpserviceService, private route: Router,private storageService:StorageService) { }
 
     url = 'https://www.softwebsystems.com/ofa'; // Your store URL
     consumerKey = 'ck_6ae751f70b993795144aa67a1e1b6dae6cf89b6a'; // Your consumer key
@@ -57,8 +59,30 @@ export class ShoppingapiService {
       this.route.navigate(['/setting']);
     }
 
-    navigateLogin(){
+    logout(){
+      this.storageService.remove('auth');
       this.route.navigate(['/login']);
     }
 
+    async navigateLogin(){
+      await this.storageService.get('auth').then(result => {
+        if (result != null) {
+         this.loginvalidate({'token' : result}).subscribe((res) => {
+           let response = JSON.parse(res);
+           if(response.data.status == 200){
+            this.route.navigate(['/profile']);
+            }
+       
+         },
+         (err)=>{
+           var resp = JSON.parse(err.error);
+           this.route.navigate(['/login']);
+         });
+        
+        }
+        }).catch(e => {
+         this.route.navigate(['/login']);
+       
+        });
+      }
   }
