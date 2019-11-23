@@ -11,7 +11,7 @@ export class HeaderInterceptor implements HttpInterceptor {
     if (true) { // e.g. if token exists, otherwise use incomming request.
         return next.handle(req.clone({
             setHeaders: {
-                'Content-type': 'application/json'                
+                'Content-type': 'application/json'
             }
         }));
     }
