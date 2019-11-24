@@ -31,6 +31,9 @@ export class ProductdetailsPage implements OnInit {
   let cartin: any = [];
  
   await this.storageService.getObject('addtocart').then(cart => {
+      cartvalue["qty"] = 1;
+      let qtytotalcost = cartvalue["price"] * cartvalue["qty"];
+      cartvalue["qtytotalcost"] = "<ins><span class='woocommerce-Price-amount amount'><span class='woocommerce-Price-currencySymbol'>&#8377;</span>"+qtytotalcost+"</span></ins>";
       if (cart != null) {
           let arry: any = [];
           for (let prop in cart) {
@@ -42,7 +45,7 @@ export class ProductdetailsPage implements OnInit {
             return false;
           }
           }
-          console.log(arry);
+          
           cartin = arry;
           cartin.push(cartvalue);
         // else{
@@ -82,7 +85,7 @@ export class ProductdetailsPage implements OnInit {
 
 
   ngOnInit() {
-
+  
    this.activeRoute.params.subscribe(routeParams => {
     this.id = routeParams.id;
     this.shoppingservice.getProduct(this.id).subscribe((res) => {

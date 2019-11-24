@@ -7,32 +7,32 @@
 </ion-toolbar>
 </ion-header>
 
-<ion-content padding color="medium">
+<ion-content class="ion-padding" color="medium">
 <form [formGroup]="loginfrm">
   <ion-item lines="none" color="medium">
     <ion-label position="floating">Email ID</ion-label>
     <ion-input type="email" name="email" formControlName="email" #email></ion-input>
   </ion-item>
-  <ion-item lines="none" padding-bottom color="medium">
+  <ion-item lines="none" class="ion-padding-bottom"  color="medium">
     <ion-label position="floating">Password</ion-label>
     <ion-input type="password" name="pwd" formControlName="pwd" #pwd></ion-input>
   </ion-item>
   <ion-item lines="none" color="medium">
-    <ion-button no-margin color="success" [disabled]="!loginfrm.valid" (click)="onLogin()" expand="full">Login</ion-button>
+    <ion-button class="ion-no-margin" color="success" [disabled]="!loginfrm.valid" (click)="onLogin()" expand="full">Login</ion-button>
   </ion-item>
-  <ion-toolbar text-center lines="none" color="medium" padding-bottom>
+  <ion-toolbar lines="none" color="medium" class="ion-padding-bottom ion-text-center" >
     <p><a href="" class="forgot">Forgot password</a></p>
   </ion-toolbar>
 
-  <ion-item lines="none" color="medium">
+  <!-- <ion-item lines="none" color="medium">
     <ion-button margin class="fb"><ion-icon name="logo-facebook"></ion-icon></ion-button>
     <ion-button margin class="ggl" color="danger"><ion-icon name="logo-google"></ion-icon></ion-button>
-  </ion-item>
+  </ion-item> -->
 
 </form>
 
 </ion-content>
 
-<ion-footer padding text-center>
-  <p no-margin>Dont have an account <a [routerLink]="['/signup']">Sign up</a></p>
+<ion-footer class="ion-padding ion-text-center">
+  <p class="ion-no-margin">Dont have an account <a [routerLink]="['/signup']">Sign up</a></p>
 </ion-footer>

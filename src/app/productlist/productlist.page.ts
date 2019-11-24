@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingapiService } from '../services/shoppingapi.service';
-import { Router } from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { StorageService } from '../storage.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-productlist',
@@ -9,13 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./productlist.page.scss'],
 })
 export class ProductlistPage implements OnInit {
+  user_name ="";
   selected_cate:any;
   productList: any = [];
   categories: any = [];
   spinner :boolean = true;
   content :boolean = false;
   catemodel:any;
-  constructor( public shoppingservice: ShoppingapiService, private router: Router) { }
+  constructor( public shoppingservice: ShoppingapiService, private router: Router,private activeRoute: ActivatedRoute, public storageService: StorageService, public toastController: ToastController) { }
 
   getProducts(product) {
     this.router.navigate(['/productdetails', product.id]);
@@ -39,7 +41,29 @@ export class ProductlistPage implements OnInit {
     
   }
   ngOnInit() {
-  
+     this.storageService.get('auth').then(result => {
+      if (result != null) {
+       this.shoppingservice.loginvalidate({'token' : result}).subscribe((res) => {
+         let response = JSON.parse(res);
+           if(response.data.status == 200){
+          this.storageService.getObject('profile').then(profile => {
+            if(profile !=null){
+              this.user_name =profile.user_display_name;
+            }else{
+              this.user_name = "Guest";
+            }
+
+          })
+         
+          }
+       })
+      }else{
+        this.user_name = "Guest";
+      }
+      }).catch(e => {
+        this.user_name = "Guest";
+     console.log(e);
+      });
     this.shoppingservice.getAllCategories().subscribe((res)=>{
       this.categories = res;
       const categories = res[0].id;

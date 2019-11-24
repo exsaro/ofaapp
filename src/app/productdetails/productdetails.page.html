@@ -4,14 +4,14 @@
     <ion-back-button></ion-back-button>
   </ion-buttons>
   <ion-title>Product details</ion-title>
-  <ion-buttons slot="end" padding (click)="shoppingservice.navigateLogin()">
+  <ion-buttons slot="end" class="ion-padding" (click)="shoppingservice.navigateLogin()">
       <ion-icon name="contact"></ion-icon>
   </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-spinner *ngIf="spinner"></ion-spinner>
-<ion-content padding *ngIf="content">
+<ion-content class="ion-padding" *ngIf="content">
 
 <ion-slides pager="true" [options]="slideOpts">
   <ion-slide *ngFor="let image of product.images">
@@ -21,6 +21,7 @@
 
 <h1>{{product.name}}</h1>
 <div class="content" [innerHTML]="product.description"></div>
+<div class="ion-text-right price" [innerHtml]='product.price_html'></div>
 </ion-content>
 <!-- </ion-content>
   <ion-img *ngFor="let image of product.images" [src]="image.src"></ion-img>
@@ -32,10 +33,10 @@
 
 <ion-footer>
 
-  <ion-grid no-padding>
+  <ion-grid class="ion-no-padding">
       <ion-row>
-          <ion-col no-padding><ion-button no-margin (click)="shoppingservice.navigateCart()" color="success" expand="full">Check out</ion-button></ion-col>
-          <ion-col no-padding><ion-button no-margin (click)="addtocart(product)" color="warning" expand="full">Add to cart</ion-button></ion-col>
+          <ion-col class="ion-no-padding"><ion-button class="ion-no-margin" (click)="shoppingservice.navigateCart()" color="success" expand="full">Check out</ion-button></ion-col>
+          <ion-col class="ion-no-padding"><ion-button class="ion-no-margin" (click)="addtocart(product)" color="warning" expand="full">Add to cart</ion-button></ion-col>
       </ion-row>
   </ion-grid> 
     

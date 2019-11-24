@@ -11,7 +11,9 @@ import { ToastController } from '@ionic/angular';
 export class AddtocartPage implements OnInit {
 
   addtocart: Array <any>;
+  disabled = true;
   spinner: boolean =true;
+
   constructor(public storageService: StorageService,public shoppingservice: ShoppingapiService, private router: Router,public toastController: ToastController) { }
 
   ngOnInit() {
@@ -37,10 +39,19 @@ export class AddtocartPage implements OnInit {
         this.addtocart = result;
        // console.log(result);
        this.spinner = false;
+      }else{
+        this.addtocart =[];
+        this.spinner = false;
       }
       }).catch(e => {
       console.log('error: ', e);
       });
+      if(this.addtocart.length > 0){
+        this.disabled = false;
+      }
+      else{
+        this.disabled = true;
+      }
   }
   async removecart(value = []){
     this.spinner = true;
@@ -83,4 +94,48 @@ export class AddtocartPage implements OnInit {
        console.log('error: ', e);
        });
    }
+   async addqty(value = []){
+    this.spinner = true;
+    let qtytotalcost;
+  await this.storageService.getObject('addtocart').then(cart => {
+      for (let product of cart) {
+        if (value["name"] === product.name) {
+          //value["product_Status"] = "New";
+         // cart.splice(cart.indexOf(product), 1);
+         product.qty = value["qty"] +1;
+         qtytotalcost = product.price * product.qty;
+         product.qtytotalcost = "<ins><span class='woocommerce-Price-amount amount'><span class='woocommerce-Price-currencySymbol'>&#8377;</span>"+qtytotalcost+"</span></ins>";
+            break;
+        }
+      }
+      this.storageService.setObject('addtocart', cart);
+      this.listcart();
+    });
+   
+  }  
+  async removeqty(value = []){
+    this.spinner = true;
+    let qtytotalcost;
+  await this.storageService.getObject('addtocart').then(cart => {
+      for (let product of cart) {
+        if (value["name"] === product.name) {
+         if ( value["qty"] > 1){
+          product.qty = value["qty"] - 1;
+          qtytotalcost = product.price * product.qty;
+          product.qtytotalcost = "<ins><span class='woocommerce-Price-amount amount'><span class='woocommerce-Price-currencySymbol'>&#8377;</span>"+qtytotalcost+"</span></ins>";
+            break;
+         }else{
+           this.removecart(value);
+           break;
+         }
+         
+        }
+      }
+      if(value["qty"] > 1){
+        this.storageService.setObject('addtocart', cart);
+      }
+       this.listcart();
+    });
+   
+  }  
 }

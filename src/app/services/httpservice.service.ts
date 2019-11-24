@@ -55,7 +55,7 @@ private prepareHeader(headers: HttpHeaders | null): object {
   //     console.log("result " +headers.get("Authorization"));
   //       }
   //   });
-  console.log("result1 " +headers.get("Authorization"));
+ // console.log("result1 " +headers.get("Authorization"));
  
     return {
       headers: headers,

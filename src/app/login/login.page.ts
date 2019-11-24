@@ -41,7 +41,8 @@ username : this.loginfrm.value["email"],
 };
 this.shoppingservice.userlogin(obj).subscribe((res) => {
   let response = JSON.parse(res);
- console.log(response.token);
+ console.log(response);
+this.storageService.setObject('profile',response);
 this.storageService.set('auth',response.token);
 this.presentToast('User logged in successfully');
 this.loginfrm.reset();
@@ -56,7 +57,7 @@ this.router.navigate(['/profile']);
 async getlogin(){
   await this.storageService.get('auth').then(result => {
     if (result != null) {
-console.log(result);
+      console.log(result);
     }
     }).catch(e => {
     console.log('error: ', e);

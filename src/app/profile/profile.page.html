@@ -1,24 +1,24 @@
 <ion-header>
   <ion-toolbar color="orange">
       <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
+          <ion-back-button defaultHref="/productlist"></ion-back-button>
         </ion-buttons>
     <ion-title>Profile</ion-title>
   </ion-toolbar>
-  <ion-toolbar color="orange" class="search ion-padding-bottom" text-center >
+  <ion-toolbar color="orange" class="search ion-padding-bottom ion-text-center" >
       <div><ion-icon name="contact"></ion-icon></div>
-    <ion-label color="light"><strong>Shara Raj</strong></ion-label>
+    <ion-label color="light"><strong>{{user_name}}</strong></ion-label>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding color="medium">
+<ion-content class="ion-padding" color="medium">
 
   Profile page
 
 </ion-content>
 
 <ion-footer class="ion-padding-top">
-    <div text-center>
+    <div class="ion-text-center">
     <ion-button color="success" class="ion-margin-bottom" (click)="shoppingservice.logout()" routerLink="/" routerDirection="root">Logout</ion-button>
   </div>
    

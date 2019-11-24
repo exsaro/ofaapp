@@ -12,7 +12,7 @@ export class StorageService {
   async set(key: string, value: any): Promise<any> {
     try {
       const result = await this.storage.set(key, value);
-      console.log('set string in storage: ' + result);
+     // console.log('set string in storage: ' + result);
       return true;
       
     } catch (reason) {
@@ -25,7 +25,7 @@ export class StorageService {
   async get(key: string): Promise<any> {
     try {
       const result = await this.storage.get(key);
-      console.log('storageGET: ' + key + ': ' + result);
+    //  console.log('storageGET: ' + key + ': ' + result);
       if (result != null) {
         return result;
       }
